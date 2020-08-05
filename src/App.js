@@ -3,11 +3,12 @@ import logo from './logo.svg';
 import './App.css';
 import amplify from 'aws-amplify';
 import aws_exports from './aws-exports';
-import { withAuthenticator } from 'aws-amplify-react';
+import { AmplifyAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 amplify.configure(aws_exports);
 
 function App() {
   return (
+    <AmplifyAuthenticator>
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -23,8 +24,10 @@ function App() {
           Learn React
         </a>
       </header>
+      <AmplifySignOut />
     </div>
+    </AmplifyAuthenticator>
   );
 }
 
-export default withAuthenticator(App, true);
+export default App;
